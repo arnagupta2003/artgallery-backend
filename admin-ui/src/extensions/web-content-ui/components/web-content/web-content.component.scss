@@ -1,0 +1,224 @@
+/* Common styling for both View and Edit Modes */
+.content-view-mode, .content-edit-mode {
+  margin: 20px;
+  padding: 20px;
+  color: rgb(26, 26, 26);
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #ffffff;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+.content-header-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #306f94;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content-detail, .input-field, .textarea-field {
+  font-size: 16px;
+}
+
+.input-field {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+.textarea-field {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+.content-photo-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.file-input {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.table-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 24px;
+  color: #306f94;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.btn-edit, .btn-save, .btn-add {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #306f94;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  max-width: 200px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover, .btn-save:hover, .btn-add:hover {
+  background-color: #1b445c;
+}
+
+.btn-edit {
+  width: 100%;
+}
+
+.btn-remove {
+  background-color: red;
+}
+
+.save-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Show content details and images in view mode */
+.content-view-mode .input-field,
+.content-view-mode .textarea-field,
+.content-view-mode .file-input,
+.content-view-mode .btn-add,
+.content-view-mode .btn-save {
+  display: none;
+}
+
+.content-view-mode .content-photo-img {
+  display: block;
+}
+
+.content-view-mode .content-detail {
+  display: inline-block;
+  border: 1px solid #525252;
+  border-radius: 2px;
+  padding: 10px;
+  color: #333;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.toggle{
+  color: #306f94;
+}
+
+/* Show the editable fields and images in edit mode */
+.content-edit-mode .content-photo-img {
+  display: block;
+}
+
+.content-edit-mode .content-detail {
+  display: none;
+}
+
+.content-edit-mode .input-field,
+.content-edit-mode .textarea-field,
+.content-edit-mode .file-input {
+  display: block;
+}
+
+.content-edit-mode .btn-add,
+.content-edit-mode .btn-save {
+  display: inline-block;
+}
+
+.content-table, .edit-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.edit-table tr {
+  max-width: 20vw;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-view-mode, .content-edit-mode {
+    width: 95%;
+    padding: 16px;
+  }
+
+  .btn-edit, .btn-save, .btn-add {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .form-group {
+    gap: 12px;
+  }
+
+  .content-photo-img {
+    width: 80px;
+    height: 80px;
+  }
+
+}
+
+.table-responsive-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 70vw;
+}
+@media (max-width: 768px) {
+  .table-responsive-wrapper {
+    width: 90vw;
+}
+}
+
+.edit-table {
+  width: 100%;
+  min-width: 300px; /* Adjust as needed for your column content */
+  border-collapse: collapse;
+}
+
+.edit-table th,
+.edit-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  white-space: nowrap; /* Prevent text from wrapping */
+}

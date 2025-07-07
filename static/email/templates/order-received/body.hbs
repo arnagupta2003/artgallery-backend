@@ -1,0 +1,19 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text>
+          📦 A new order ({{ order.code }}) has reached the <strong>Payment Settled</strong> stage.
+        </mj-text>
+        <mj-text>
+          <strong>Customer:</strong> {{ order.customer.firstName }} {{ order.customer.lastName }}<br />
+          <strong>Total:</strong> {{ formatMoney order.totalWithTax order.currencyCode 'en' }}<br />
+          <strong>Date:</strong> {{ formatDate order.orderPlacedAt }}
+        </mj-text>
+        <mj-text>
+          View the order in the Admin UI for details.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

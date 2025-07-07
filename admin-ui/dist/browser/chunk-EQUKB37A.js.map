@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/extensions/my-admin-ui-ui/routes.ts"],
+  "sourcesContent": ["export default [\r\n    // Add your custom routes here\r\n];\r\n"],
+  "mappings": "4BAAA,IAAAA,EAAe,CACX",
+  "names": ["routes_default"]
+}

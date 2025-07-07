@@ -1,0 +1,258 @@
+<!-- View Mode -->
+<div id="view-mode" class="content-view-mode">
+    <div class="form-container">
+        <h1 class="content-header-title">Manage website content</h1>
+        <button type="button" class="btn-edit" (click)="enableEditing()">Edit</button>
+        <h2>Homepage content</h2>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <div>
+                <div class="form-group">
+                    <label for="quotation"><strong>Quote:</strong></label>
+                    <span id="quotation" class="content-detail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="homeintroduction"><strong>Introduction:</strong></label>
+                    <span id="homeintroduction" class="content-detail"></span>
+                </div>
+                <div class="form-group">
+                    <h5 class=""><strong>Artist Achievements (for marquee animation)</strong></h5>
+                    <div id="artist-achievements-container" class="achievements-container"></div>
+                </div>
+                <div class="form-group">
+                    <strong>Artist Photo :</strong><br />
+                    <img id="artistPhotoHome" class="content-photo-img" />
+                </div>
+            </div>
+        </details>
+        <h2>About page content</h2>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <div>
+                <div class="form-group">
+                    <label for="age"><strong>Age:</strong></label>
+                    <span id="age" class="content-detail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="nationality"><strong>Nationality:</strong></label>
+                    <span id="nationality" class="content-detail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="aboutintroductionpara1"><strong>Introduction Paragraph 1:</strong></label>
+                    <span id="aboutintroductionpara1" class="content-detail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="aboutintroductionpara2"><strong>Introduction Paragraph 2:</strong></label>
+                    <span id="aboutintroductionpara2" class="content-detail"></span>
+                </div>
+                <div class="form-group">
+                    <strong>Artist Photo:</strong><br />
+                    <img id="artistPhotoAbout" class="content-photo-img" />
+                </div>
+                <div class="form-group">
+                    <label for="instagram"><strong>Instagram:</strong></label>
+                    <span id="instagram-view" class="content-detail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="twitter"><strong>Twitter:</strong></label>
+                    <span id="twitter-view" class="content-detail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp"><strong>WhatsApp:</strong></label>
+                    <span id="whatsapp-view" class="content-detail"></span>
+                </div>
+            </div>
+        </details>
+        <h3>Achievements</h3>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <table border="1" id="achievements-table" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Award</th>
+                        <th>Venue</th>
+                        <th>Year</th>
+                        <th>Photo</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </details>
+
+        <h3>Exhibitions</h3>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <table border="1" id="exhibitions-table" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Venue</th>
+                        <th>Date</th>
+                        <th>Cover Photo</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </details>
+
+        <h3>Media mentions</h3>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <table border="1" id="mediamentions-table" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Description</th>
+                        <th>Year</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </details>
+    </div>
+</div>
+
+<div id="edit-mode" class="content-edit-mode" style="display: none;">
+    <div class="form-container">
+        <h2 class="content-header-title">Edit Web Content</h2>
+
+        <h2>Homepage content</h2>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <div class="form-group">
+                <label for="quotation">Quotation:
+                    <input id="quotation-edit" type="text" class="input-field" rows="8"/>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="homeintroduction">Home Introduction:
+                    <textarea id="homeintroduction-edit" class="input-field" rows="8"></textarea>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="artistPhotoHome">Artist Photo (Home):
+                    <input type="file" class="file-input" onchange="onFileSelected(event, 'artistPhotoHome')" />
+                </label><br />
+            </div>
+            <h3 class="table-header">Artist Achievements</h3>
+            <div id="artist-achievements-container" class="achievements-container">
+                <ul id="artist-achievements-list"></ul>
+                <button type="button" class="btn-add" (click)="addArtistAchievementRow()">Add Achievement</button>
+            </div>
+        </details>
+
+        <h2>About page content</h2>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <div class="form-group">
+                <label for="age">Age:
+                    <input id="age-edit" type="number" class="input-field" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="nationality">Nationality:
+                    <input id="nationality-edit" type="text" class="input-field" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="aboutintroductionpara1-edit">Introduction Paragraph 1:
+                    <textarea id="aboutintroductionpara1-edit" class="input-field" rows="8"></textarea>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="aboutintroductionpara2-edit">Introduction Paragraph 1:
+                    <textarea id="aboutintroductionpara2-edit" class="input-field" rows="8"></textarea>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="artistPhotoAbout">Artist Photo:
+                    <input type="file" class="file-input" onchange="onFileSelected(event, 'artistPhotoAbout')" />
+                </label><br />
+            </div>
+            <div class="form-group">
+                <label for="instagram">Instagram:
+                    <input id="instagram-edit" type="text" class="input-field" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="twitter">Twitter:
+                    <input id="twitter-edit" type="text" class="input-field" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp:
+                    <input id="whatsapp-edit" type="text" class="input-field" />
+                </label>
+            </div>
+        </details>
+
+        <h3>Achievements</h3>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <div  class="table-responsive-wrapper">
+                <table id="edit-achievements-table" class="edit-table">
+                    <thead>
+                        <tr>
+                            <th>Award</th>
+                            <th>Venue</th>
+                            <th>Year</th>
+                            <th>Photo</th>
+                            <th>Link</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <button type="button" class="btn-add" (click)="addAchievementRow()">Add Achievement</button>
+        </details>
+
+        <h3>Exhibitions</h3>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <div class="table-responsive-wrapper">
+            <table id="edit-exhibitions-table" class="edit-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Venue</th>
+                        <th>Date</th>
+                        <th>Cover Photo</th>
+                        <th>Link</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+            <button type="button" class="btn-add" onclick="addExhibitionRow()">Add Exhibition</button>
+        </details>
+
+        <h3>Media Mentions</h3>
+        <details>
+            <summary class="toggle">click to view</summary>
+            <div class="table-responsive-wrapper">
+            <table id="edit-mediamentions-table" class="edit-table">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Description</th>
+                        <th>Year</th>
+                        <th>Link</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+            <button type="button" class="btn-add" (click)="addMediaMentionRow()">Add Media Mention</button>
+        </details>
+
+        <div class="save-btn">
+            <button type="button" class="btn-save" (click)="saveChanges()">Save</button>
+        </div>
+    </div>
+</div>
