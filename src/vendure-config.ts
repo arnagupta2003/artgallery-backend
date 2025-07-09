@@ -133,7 +133,7 @@ export const config: VendureConfig = {
         AssetServerPlugin.init({
             route: 'assets',
             assetUploadDir: process.env.ASSET_UPLOAD_DIR || path.join(__dirname, '../static/assets'),
-            assetUrlPrefix: IS_DEV ? undefined : 'https://your-domain.com/assets/', // ✅ Replace if needed
+            assetUrlPrefix: IS_DEV ? undefined : 'https://cms.debangshudasart.com/assets/', // ✅ Replace if needed
         }),
         DefaultJobQueuePlugin.init({ useDatabaseForBuffer: true }),
         DefaultSearchPlugin.init({ bufferUpdates: false, indexStockStatus: true }),
