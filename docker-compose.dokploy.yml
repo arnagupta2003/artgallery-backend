@@ -21,6 +21,7 @@ services:
       - DB_PASSWORD=Shk2UoNGm5jA2ZcejznNeg
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - EXPRESS_RATE_LIMIT_VALIDATE=false
 
   # 2. The Background Job Worker Queue
   backend-worker:
