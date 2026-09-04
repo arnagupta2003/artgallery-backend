@@ -1,16 +1,16 @@
 version: "3.8"
 
 services:
-  # The Node.js Vendure Backend Application Engine
-  backend:
+  # 1. The Main API Web Server
+  backend-server:
     image: artgallery/backend:1438
     restart: unless-stopped
+    command: npm run start:server
     env_file:
       - .env
     ports:
       - "3010:3000"
     volumes:
-      # Maps your local media folder directly into the container's app path
       - /home/arnav/prod-data/debangshu-art/debangshu-vendure-assets:/usr/src/app/assets
     environment:
       - DB_TYPE=postgres
@@ -21,24 +21,41 @@ services:
       - DB_PASSWORD=Shk2UoNGm5jA2ZcejznNeg
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-    networks:
-      - dokploy-network
 
-  # The Relational Postgres Database
+  # 2. The Background Job Worker Queue
+  backend-worker:
+    image: artgallery/backend:1438
+    restart: unless-stopped
+    command: npm run start:worker
+    env_file:
+      - .env
+    volumes:
+      - /home/arnav/prod-data/debangshu-art/debangshu-vendure-assets:/usr/src/app/assets
+    environment:
+      - DB_TYPE=postgres
+      - DB_HOST=postgres_db
+      - DB_PORT=5432
+      - DB_NAME=vendure
+      - DB_USER=vendure
+      - DB_PASSWORD=Shk2UoNGm5jA2ZcejznNeg
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  # 3. The Relational Postgres Database
   postgres_db:
-    image: postgres:16-alpine
+    # FIX: Upgraded image tag to matching Postgres 17 to match your data files
+    image: postgres:17-alpine
     restart: unless-stopped
     ports:
       - "6543:5432"
     volumes:
-      # Maps your existing database files right back into the engine data path
       - /home/arnav/prod-data/debangshu-art/debangshu-vendure-db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=vendure
       - POSTGRES_USER=vendure
       - POSTGRES_PASSWORD=Shk2UoNGm5jA2ZcejznNeg
 
-  # The Job Queue & Cache Engine
+  # 4. The Job Queue & Cache Engine
   redis:
     image: redis:7-alpine
     restart: unless-stopped
@@ -50,3 +67,4 @@ services:
 volumes:
   redis_data:
     driver: local
+
